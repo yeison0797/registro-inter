@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\app\materias\counter.component.spec.ts" />
+    <None Remove="ClientApp\src\app\materias\materias.component.spec.ts" />
     <None Remove="ClientApp\src\app\home\home.component.cs" />
   </ItemGroup>
 

@@ -1,0 +1,31 @@
+body {
+}
+
+h1 {
+  padding-top: 96px;
+}
+
+.seleccionable-estudiante{
+    width:450px;
+    height:40px;
+    border-radius:5px;
+}
+
+.boton-agregar-materia {
+  width: 160px;
+  height: 40px;
+  background-color: #60DD4C;
+  border-radius: 10px;
+  border:none;
+}
+
+.boton-agregar-materia:hover{
+    background-color:white;
+    border:solid;
+}
+
+.contenedor-select{
+    display:flex;
+    flex-direction:row;
+    gap:400px;
+}
