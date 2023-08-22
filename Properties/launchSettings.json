@@ -1,21 +1,14 @@
-﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:31820",
-      "sslPort": 44368
-    }
-  },
+{
   "profiles": {
     "registro_estudiantes": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7194;http://localhost:5199",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      }
+      },
+      "applicationUrl": "https://localhost:7194;http://localhost:5199"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -24,6 +17,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
       }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:31820",
+      "sslPort": 44368
     }
   }
 }
