@@ -1,0 +1,36 @@
+<h1>Lista de Estudiantes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let estudiante of estudiantes">
+      <tr>
+        <td>{{ estudiante.estudianteId }}</td>
+        <td *ngIf="estudianteEnEdicion !== estudiante">{{ estudiante.nombre }}</td>
+        <td *ngIf="estudianteEnEdicion === estudiante">
+          <input type="text" [(ngModel)]="estudianteEnEdicion.nombre">
+        </td>
+        <td>
+          <ng-container *ngIf="estudianteEnEdicion === estudiante; else acciones">
+            <button (click)="guardarCambios()" class="btn btn-success">Guardar</button>
+            <button (click)="cancelarEdicion()" class="btn btn-secondary">Cancelar</button>
+          </ng-container>
+          <ng-template #acciones>
+            <button (click)="editarEstudiante(estudiante)" class="btn btn-primary">Editar</button>
+            <button (click)="eliminarEstudiante(estudiante)" class="btn btn-danger">Eliminar</button>
+          </ng-template>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<div class="form-group">
+  <label for="nombre">Nombre:</label>
+  <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoEstudiante.nombre" name="nombre" required>
+</div>
+<button (click)="agregarEstudiante()" class="btn btn-primary">Agregar</button>
