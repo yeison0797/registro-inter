@@ -28,5 +28,5 @@ h1 {
 .contenedor-select{
     display:flex;
     flex-direction:row;
-    gap:400px;
+    gap:20px;
 }
