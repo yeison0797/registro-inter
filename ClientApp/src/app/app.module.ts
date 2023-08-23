@@ -11,6 +11,11 @@ import { MateriasComponent } from './materias/materias.component';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +23,14 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     HomeComponent,
     MateriasComponent,
     FetchDataComponent,
-    EstudiantesComponent
+    EstudiantesComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'materias', component: MateriasComponent },

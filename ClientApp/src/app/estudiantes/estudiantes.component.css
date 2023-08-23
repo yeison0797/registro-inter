@@ -1,0 +1,10 @@
+body {
+}
+
+.contenedor-entradas-datos{
+    display:flex;
+    flex-direction:row;
+    gap:300px;
+    padding-top:60px;
+    padding-bottom:20px
+}

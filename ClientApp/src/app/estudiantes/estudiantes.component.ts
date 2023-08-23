@@ -1,13 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-estudiantes',
-  templateUrl: './estudiantes.component.html'
+  templateUrl: './estudiantes.component.html',
+  styleUrls: ['./estudiantes.component.css'],
 })
 export class EstudiantesComponent {
   estudiantes: Estudiante[] = [];
-  nuevoEstudiante: Estudiante = { estudianteId: 0, nombre: '' };
+  nuevoEstudiante: Estudiante = { estudianteId: 0, nombre: '', identificacion: 0 };
   estudianteEnEdicion: Estudiante | null = null;
 
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
@@ -17,19 +20,25 @@ export class EstudiantesComponent {
   cargarEstudiantes() {
     this.http.get<Estudiante[]>('/api/Estudiantes').subscribe(data => {
       this.estudiantes = data;
-    }, error => console.error(error));
+      console.log(this.estudiantes);
+    }
+      , error => console.error(error));
   }
 
   agregarEstudiante() {
     this.http.post('/api/Estudiantes', this.nuevoEstudiante).subscribe(() => {
-      this.nuevoEstudiante = { estudianteId: 0, nombre: '' };
+      this.nuevoEstudiante = { estudianteId: 0, nombre: '', identificacion: 0 };
       this.cargarEstudiantes();
     }, error => console.error(error));
   }
 
+
+
   editarEstudiante(estudiante: Estudiante) {
     this.estudianteEnEdicion = { ...estudiante };
   }
+
+ 
 
   guardarCambios() {
     if (this.estudianteEnEdicion) {
@@ -54,4 +63,5 @@ export class EstudiantesComponent {
 interface Estudiante {
   estudianteId: number;
   nombre: string;
+  identificacion: number;
 }

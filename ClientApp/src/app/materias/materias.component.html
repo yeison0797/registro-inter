@@ -1,26 +1,32 @@
 <div class="body">
   <h1>Selecciona el estudiante</h1>
   <div class="contenedor-select">
-    <select class="seleccionable-estudiante"></select>
+    <select class="seleccionable-estudiante">
+      <option *ngFor="let estudiante of estudiantes" [value]="estudiante.estudianteId">{{ estudiante.nombre }}</option>
+    </select>
     <button class="boton-agregar-materia">Agregar materia</button>
   </div>
-  <h1>Materias Inscritas estudiante Haland</h1>
+  <h1>Materias del Programa</h1>
   <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
       <tr>
+        <th></th>
         <th>Materia</th>
-        <th>Créditos</th>
+        <th>Creditos</th>
         <th>Docente</th>
-
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>ggg</td>
-        <td>vv</td>
-        <td>vv</td>
+      <ng-container *ngFor="let materia of materias">
+        <tr>
+          <td>{{ materia.materiaId }}</td>
+          <td>{{ materia.nombre }}</td>
+          <td>{{ materia.creditos }}</td>
+          <td>profe luis</td>
 
-      </tr>
+
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 </div>
