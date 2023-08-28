@@ -1,26 +1,56 @@
 <div class="body">
   <h1>Selecciona el estudiante</h1>
   <div class="contenedor-select">
-    <select class="seleccionable-estudiante"></select>
-    <button class="boton-agregar-materia">Agregar materia</button>
+    <select class="seleccionable-estudiante">
+      <option *ngFor="let estudiante of estudiantes" [value]="estudiante.estudianteId">{{ estudiante.nombre }}</option>
+    </select>
+    <select class="seleccionable-materia" [(ngModel)]="materiaSeleccionada">
+      <option *ngFor="let materia of materias" [ngValue]="materia">{{ materia.nombre }}</option>
+    </select>
+    <button (click)="agregarMateriaSeleccionada()" class="boton-agregar-materia">Agregar materia</button>
+    <!--<button class="boton-agregar-materia">Agregar materia</button>-->
   </div>
-  <h1>Materias Inscritas estudiante Haland</h1>
+  <button class="boton-inscribir" (click)="inscribirMaterias()" [disabled]="materiasSeleccionadas.length === 0">Inscribir Materias</button>
+  <h1>Materias del Programa</h1>
   <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
       <tr>
+        <th></th>
         <th>Materia</th>
-        <th>Créditos</th>
+        <th>Creditos</th>
         <th>Docente</th>
-
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>ggg</td>
-        <td>vv</td>
-        <td>vv</td>
+      <ng-container *ngFor="let materia of materias">
+        <tr>
+          <td>{{ materia.materiaId }}</td>
+          <td>{{ materia.nombre }}</td>
+          <td>{{ materia.creditos }}</td>
+          <td *ngFor="let profesor of profesores">{{ profesor.nombre }}</td>
 
-      </tr>
+
+        </tr>
+      </ng-container>
     </tbody>
   </table>
+  <div class="estudiante-info">
+    <h2>Información del Estudiante</h2>
+    <p>Nombre del Estudiante: {{ nombreEstudiante }}</p>
+    <p>Materias Seleccionadas:</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Materia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let materia of materiasSeleccionadas">
+          <td>{{ materia.materiaId }}</td>
+          <td>{{ materia.nombre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

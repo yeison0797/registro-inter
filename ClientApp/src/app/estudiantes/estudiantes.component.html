@@ -4,7 +4,9 @@
     <tr>
       <th>ID</th>
       <th>Nombre</th>
+      <th>Identificación</th>
       <th>Acciones</th>
+
     </tr>
   </thead>
   <tbody>
@@ -12,6 +14,7 @@
       <tr>
         <td>{{ estudiante.estudianteId }}</td>
         <td *ngIf="estudianteEnEdicion !== estudiante">{{ estudiante.nombre }}</td>
+        <td *ngIf="estudianteEnEdicion !== estudiante">{{ estudiante.identificacion }}</td>
         <td *ngIf="estudianteEnEdicion === estudiante">
           <input type="text" [(ngModel)]="estudianteEnEdicion.nombre">
         </td>
@@ -21,16 +24,26 @@
             <button (click)="cancelarEdicion()" class="btn btn-secondary">Cancelar</button>
           </ng-container>
           <ng-template #acciones>
-            <button (click)="editarEstudiante(estudiante)" class="btn btn-primary">Editar</button>
+            
+            <!--<button (click)="editarEstudiante(estudiante)" class="btn btn-primary">Editar</button>-->
             <button (click)="eliminarEstudiante(estudiante)" class="btn btn-danger">Eliminar</button>
           </ng-template>
+
         </td>
       </tr>
     </ng-container>
   </tbody>
 </table>
 <div class="form-group">
-  <label for="nombre">Nombre:</label>
-  <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoEstudiante.nombre" name="nombre" required>
+  <div class="contenedor-entradas-datos">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoEstudiante.nombre" name="nombre" required>
+    </div>
+    <div>
+      <label for="nombre">Identificación:</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoEstudiante.identificacion" name="nombre" required>
+    </div>
+  </div>
 </div>
-<button (click)="agregarEstudiante()" class="btn btn-primary">Agregar</button>
+<button (click)="agregarEstudiante()" class="btn btn-success">Agregar</button>
