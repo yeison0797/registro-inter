@@ -21,10 +21,7 @@ namespace registro_estudiantes.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Clase>>> GetClases()
         {
-            return await _context.Clases
-                .Include(c => c.Estudiante)
-                .Include(c => c.Materia)
-                .Include(c => c.Profesor)
+            return await _context.Clases                
                 .ToListAsync();
         }
 
@@ -44,10 +41,22 @@ namespace registro_estudiantes.Controllers
         [HttpPost]
         public async Task<ActionResult<Clase>> PostClase(Clase clase)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Clases.Add(clase);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetClase), new { id = clase.ClaseId }, clase);
+            if (ClaseExists(clase.ClaseId))
+            {
+                return CreatedAtAction(nameof(GetClase), new { id = clase.ClaseId }, clase);
+            }
+            else
+            {
+                return StatusCode(500, "Error al crear la clase en la base de datos");
+            }
         }
 
         [HttpPut("{id}")]

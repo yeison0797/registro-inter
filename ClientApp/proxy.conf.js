@@ -9,7 +9,8 @@ const PROXY_CONFIG = [
       "/weatherforecast",
       "/api/Estudiantes",
       "/api/Materias",
-      "/api/Profesores"
+      "/api/Profesores",
+      "/api/Clases"
    ],
     proxyTimeout: 10000,
     target: target,

@@ -14,7 +14,6 @@ export class MateriasComponent {
   materiaSeleccionada: Materia | undefined;
   nombreEstudiante: string = '';
 
-
   constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.cargarMaterias();
     this.cargarEstudiantes();
@@ -32,11 +31,8 @@ export class MateriasComponent {
   cargarEstudiantes() {
     this.http.get<Estudiante[]>('/api/Estudiantes').subscribe(data => {
       this.estudiantes = data;
-
-      this.nombreEstudiante = data[0]?.nombre;
-      console.log(this.estudiantes);
-    }
-      , error => console.error(error));
+      this.nombreEstudiante = data[0]?.nombre || ''; // Manejo de posible valor nulo
+    }, error => console.error(error));
   }
 
   cargarProfesores() {
@@ -66,7 +62,7 @@ export class MateriasComponent {
       materiasIds: materiasIds
     };
 
-    this.http.post('/api/Clases/InscribirMaterias', inscripcion).subscribe(() => {
+    this.http.post('/api/Clases', inscripcion).subscribe(() => {
       alert('Materias inscritas correctamente');
       // Actualiza las materias inscritas para mostrar en la tabla
       this.cargarMateriasInscritas(estudianteId);
